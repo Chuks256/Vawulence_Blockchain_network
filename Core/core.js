@@ -87,6 +87,7 @@ class Blockchain{
         this.Supplylimit=2000000; // supplylimit 
         this.Comrade_Reward=50; // reward for mining block in mempool
         this.Netaddr="04d7a6049057ac2d1b4e7b22e1fdc0b528fda5fbfabf1b8c6a59ee628009daa44ac958f2c73b23fced2d0ecea99d7ce6cb891e3cfab7d232a20a900ae62f2cac6b"
+        this.Version="1.0"
         this.createHardcodedtransact() 
     }
 
@@ -206,7 +207,7 @@ class Blockchain{
 // module.exports={Transaction,Blockchain}
 const mrA="04a54a2fa59447e3b4d8310cca3e5beaa3a2e326835c6d4d4ffbb8c300248a69935f4dd3d81873216c0ea142e2ef0655048f7dde78c6a32100533a20682d2e3559"
 const mykey=Ec.keyFromPrivate("0b6cbe10b2e5cda32556d207f61cdc568f837a2a141b2f3892be41bd15803755")
-const tx=new Transaction(mykey.getPublic('hex'),mrA,0.025);
+const tx=new Transaction(mykey.getPublic('hex'),mrA,0.00022);
 tx.Sign(mykey);
 const b=new Blockchain();
 b.Addtransaction(tx)
