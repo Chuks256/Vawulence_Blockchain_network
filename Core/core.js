@@ -87,10 +87,11 @@ class Blockchain{
         this.Supplylimit=2000000; // supplylimit 
         this.Comrade_Reward=50; // reward for mining block in mempool
         this.Netaddr="04d7a6049057ac2d1b4e7b22e1fdc0b528fda5fbfabf1b8c6a59ee628009daa44ac958f2c73b23fced2d0ecea99d7ce6cb891e3cfab7d232a20a900ae62f2cac6b"
-        this.Version="1.0"
+        this.Version="1.0" // version of blockchain 
         this.createHardcodedtransact() 
     }
 
+    // create Genesis block 
     createGenesisBlock(){
         let details='Without Vawulence,man is nothing'
         let gen_blk=new Block(0,Date.now(),details);
@@ -168,11 +169,11 @@ class Blockchain{
     }
     }
 
-
+    // method to mine pending transaction in mempool
     mineMempool(Comrade_Addr,trans_choice){
         const blk=new Block(this.getblockindex(),Date.now(),trans_choice,this.getlastBlock().hash);
-        blk.mine(this.Difficulty);
-        this.Chain.push(blk)
+        blk.mine(this.Difficulty); // mine block
+        this.Chain.push(blk) // push block block into the chain 
         this.checkDifficulty(); // call difficulty
          // check supply limit 
          if(this.Supplylimit < this.Comrade_Reward){
@@ -183,8 +184,9 @@ class Blockchain{
          }
     }
 
-
+    // method to add transaction into mempool
     Addtransaction(transaction){
+        // check transaction values  
         if(! transaction.Sndr || ! transaction.Rcr){
             return false 
         }
@@ -200,7 +202,6 @@ class Blockchain{
         // then push transaction to mempool
         return this.Mempool.push(transaction)
     }
-
 
  }
 
