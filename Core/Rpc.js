@@ -15,11 +15,12 @@ class Rpc{
         Wss.on("connection" , async(socket)=>{
             this.AddtoNetworkStore(socket);
         })
+        this.connectPeers();
     }
 
     AddtoNetworkStore(socket){
         this.Networkstore.push(socket);
-        this.connectPeers();
+        this.Handlemsg()
         return true;
     }
 
